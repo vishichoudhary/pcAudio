@@ -54,7 +54,7 @@ class recievePlay(threading.Thread):
             print "client recieve play"
             #time.sleep(2)
 
-#threadone=sendRecord()
-threadtwo=recievePlay()
-#threadone.start()
-threadtwo.start()
+threadone=sendRecord()
+#threadtwo=recievePlay()
+threadone.start()
+#threadtwo.start()
