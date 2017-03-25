@@ -10,10 +10,6 @@ PORT=int(raw_input("Enter the port of app"))
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST, PORT))
 
-s.bind((HOST,PORT))
-s.listen(1)
-conn,addr=s.accept()
-
 CHUNK=1024
 FORMAT=pyaudio.paInt16
 CHANNELS=1
@@ -49,11 +45,11 @@ class recievePlay(threading.Thread):
         self.recievePlayfun()
 
     def recievePlayfun(self):
-        self.data = conn.recv(1024)
+        self.data = s.recv(1024)
         self.stream1=self.p1.open(format=FORMAT,channels=CHANNELS,rate=RATE,output=True,frames_per_buffer=CHUNK)
         while self.data != '':
             self.stream1.write(self.data)
-            self.data = conn.recv(1024)
+            self.data = s.recv(1024)
             time.sleep(.1)
 
 threadone=sendRecord()

@@ -30,7 +30,7 @@ class sendRecord(threading.Thread):
     def sendRecordFun(self):
 	        while 1:
 	            self.sendData=self.stream.read(CHUNK)
-	            s.sendall(self.sendData)
+	            conn.sendall(self.sendData)
 	            time.sleep(.1)
             
 class recievePlay(threading.Thread):
