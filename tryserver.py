@@ -12,13 +12,14 @@ s.bind((HOST,PORT))
 s.listen(1)
 conn,addr=s.accept()
 
+CHUNK=1024
+FORMAT=pyaudio.paInt16
+CHANNELS=1
+RATE=44100
+
 class sendRecord(threading.Thread):
     def __init__(self):
 	        threading.Thread.__init__(self)
-	        self.CHUNK=1024
-	        self.FORMAT=pyaudio.paInt16
-	        self.CHANNELS=1
-	        self.RATE=44100
 	        self.WAVE_OUTPUT_FILENAME="sever_output.wav"
 	        self.frames=[]
 	        self.p=pyaudio.PyAudio()
@@ -35,10 +36,6 @@ class sendRecord(threading.Thread):
 class recievePlay(threading.Thread):
     def __init__(self):
 	    threading.Thread.__init__(self)
-	    self.CHUNK=1024
-	    self.FORMAT=pyaudio.paInt16
-	    self.CHANNELS=1
-	    self.RATE=44100
 	    self.WAVE_OUTPUT_FILENAME="sever_output.wav"
 	    self.frames=[]
 	    self.p1=pyaudio.PyAudio()

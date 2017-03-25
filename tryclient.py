@@ -10,13 +10,14 @@ PORT=int(raw_input("Enter the port of app"))
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST, PORT))
 
+CHUNK=1024
+FORMAT=pyaudio.paInt16
+CHANNELS=1
+RATE=44100
+
 class sendRecord(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
-        self.CHUNK=1024
-        self.FORMAT=pyaudio.paInt16
-        self.CHANNELS=1
-        self.RATE=44100
         self.WAVE_OUTPUT_FILENAME="sever_output.wav"
         self.frames=[]
         self.p=pyaudio.PyAudio()
@@ -34,10 +35,6 @@ class sendRecord(threading.Thread):
 class recievePlay(threading.Thread):
     def __init__(self):
 	    threading.Thread.__init__(self)
-	    self.CHUNK=1024
-	    self.FORMAT=pyaudio.paInt16
-	    self.CHANNELS=1
-	    self.RATE=44100
 	    self.WAVE_OUTPUT_FILENAME="client.wav"
 	    self.frames=[]
 	    self.p1=pyaudio.PyAudio()
@@ -49,7 +46,7 @@ class recievePlay(threading.Thread):
 
     def recievePlayfun(self):
         self.data = conn.recv(1024)
-        self.stream1=p1.open(format=FORMAT,channels=CHANNELS,rate=RATE,output=True,frames_per_buffer=CHUNK)
+        self.stream1=self.p1.open(format=FORMAT,channels=CHANNELS,rate=RATE,output=True,frames_per_buffer=CHUNK)
         while self.data != '':
             self.stream1.write(data)
             self.data = conn.recv(1024)
