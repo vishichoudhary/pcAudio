@@ -53,7 +53,7 @@ class recievePlay(threading.Thread):
             self.stream1.write(self.data)
             self.data = conn.recv(1024)
             print "server recieve play"
-            time.sleep()
+            time.sleep(4)
 
 threadone=sendRecord()
 threadtwo=recievePlay()
