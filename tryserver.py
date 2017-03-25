@@ -32,7 +32,7 @@ class sendRecord(threading.Thread):
 	            self.sendData=self.stream.read(CHUNK)
 	            conn.sendall(self.sendData)
 	            print "server sendRecord"
-	            time.sleep(10)
+	            time.sleep(2)
             
 class recievePlay(threading.Thread):
     def __init__(self):
@@ -53,7 +53,7 @@ class recievePlay(threading.Thread):
             self.stream1.write(self.data)
             self.data = conn.recv(1024)
             print "server recieve play"
-            time.sleep(10)
+            time.sleep()
 
 threadone=sendRecord()
 threadtwo=recievePlay()
