@@ -28,10 +28,10 @@ class sendRecord(threading.Thread):
         self.sendRecordFun()
     def sendRecordFun(self):
         while 1:
-	        self.sendData=stream.read(CHUNK)
-	        s.sendall(self.sendData)
+            self.sendData=stream.read(CHUNK)
+            s.sendall(self.sendData)
             print "client record send"
-	        time.sleep(.1)
+            time.sleep(.1)
 
 class recievePlay(threading.Thread):
     def __init__(self):
