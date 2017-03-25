@@ -31,6 +31,7 @@ class sendRecord(threading.Thread):
 	        while 1:
 	            self.sendData=self.stream.read(CHUNK)
 	            conn.sendall(self.sendData)
+	            print "server sendRecord"
 	            time.sleep(.1)
             
 class recievePlay(threading.Thread):
@@ -51,6 +52,7 @@ class recievePlay(threading.Thread):
         while self.data != '':
             self.stream1.write(self.data)
             self.data = conn.recv(1024)
+            print "server recieve play"
             time.sleep(.1)
 
 threadone=sendRecord()
