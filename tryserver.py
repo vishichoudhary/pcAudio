@@ -26,7 +26,7 @@ class sendRecord(threading.Thread):
 	        self.stream=self.p.open(format=FORMAT,channels=CHANNELS,rate=RATE,input=True,frames_per_buffer=CHUNK)
 	        self.sendData=''
     def run(self):
-        	sendRecordFun()
+        	self.sendRecordFun()
     def sendRecordFun(self):
 	        while 1:
 	            self.sendData=self.stream.read(CHUNK)
@@ -43,7 +43,7 @@ class recievePlay(threading.Thread):
 	    self.data='123'
 
     def run(self):
-        recievePlayfun()
+        self.recievePlayfun()
 
     def recievePlayfun(self):
         self.data = conn.recv(1024)
