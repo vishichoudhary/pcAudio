@@ -22,7 +22,7 @@ class sendRecord(threading.Thread):
 	        self.WAVE_OUTPUT_FILENAME="sever_output.wav"
 	        self.frames=[]
 	        self.p=pyaudio.PyAudio()
-	        self.stream=p.open(format=FORMAT,channels=CHANNELS,rate=RATE,input=True,frames_per_buffer=CHUNK)
+	        self.stream=self.p.open(format=FORMAT,channels=CHANNELS,rate=RATE,input=True,frames_per_buffer=CHUNK)
 	        self.sendData=''
     def run(self):
         	sendRecordFun()
@@ -42,7 +42,7 @@ class recievePlay(threading.Thread):
 	    self.WAVE_OUTPUT_FILENAME="sever_output.wav"
 	    self.frames=[]
 	    self.p1=pyaudio.PyAudio()
-	    self.stream1=p1.open(format=FORMAT,channels=CHANNELS,rate=RATE,output=True,frames_per_buffer=CHUNK)
+	    self.stream1=self.p1.open(format=FORMAT,channels=CHANNELS,rate=RATE,output=True,frames_per_buffer=CHUNK)
 	    self.data='123'
 
     def run(self):
