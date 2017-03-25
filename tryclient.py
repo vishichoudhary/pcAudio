@@ -28,7 +28,7 @@ class sendRecord(threading.Thread):
         self.sendRecordFun()
     def sendRecordFun(self):
         while 1:
-            self.sendData=stream.read(CHUNK)
+            self.sendData=self.stream.read(CHUNK)
             s.sendall(self.sendData)
             print "client record send"
             time.sleep(.1)
