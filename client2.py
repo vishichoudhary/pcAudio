@@ -14,9 +14,9 @@ RATE = 44100
 HOST=raw_input("Enter the proxy of Server")
 PORT=raw_input("Enter the port of application")
 
+
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST, PORT))
-
 p = pyaudio.PyAudio()
 
 stream = p.open(format=FORMAT,channels=CHANNELS,rate=RATE,input=True,frames_per_buffer=CHUNK)
