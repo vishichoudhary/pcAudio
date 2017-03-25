@@ -26,7 +26,7 @@ class sendRecord(threading.Thread):
 
     def run(self):
         sendRecordFun()
-    def sendRecordFun():
+    def sendRecordFun(self):
         while 1:
 	        self.sendData=stream.read(CHUNK)
 	        self.s.sendall(sendData)

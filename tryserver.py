@@ -45,7 +45,7 @@ class recievePlay(threading.Thread):
     def run(self):
         recievePlayfun()
 
-    def recievePlayfun():
+    def recievePlayfun(self):
         self.data = conn.recv(1024)
         self.stream1=self.p1.open(format=FORMAT,channels=CHANNELS,rate=RATE,output=True,frames_per_buffer=CHUNK)
         while self.data != '':
