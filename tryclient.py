@@ -10,6 +10,10 @@ PORT=int(raw_input("Enter the port of app"))
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST, PORT))
 
+s.bind((HOST,PORT))
+s.listen(1)
+conn,addr=s.accept()
+
 CHUNK=1024
 FORMAT=pyaudio.paInt16
 CHANNELS=1
