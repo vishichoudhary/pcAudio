@@ -55,6 +55,6 @@ class recievePlay(threading.Thread):
             #time.sleep(2)
 
 threadone=sendRecord()
-#threadtwo=recievePlay()
+threadtwo=recievePlay()
 threadone.start()
-#threadtwo.start()
+threadtwo.start()
