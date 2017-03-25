@@ -11,22 +11,22 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST, PORT))
 
 class sendRecord(threading.Thread):
-	def __init__(self):
-		threading.Thread.__init__(self)
-	    self.CHUNK=1024
-	    self.FORMAT=pyaudio.paInt16
-	    self.CHANNELS=1
-	    self.RATE=44100
-	    self.WAVE_OUTPUT_FILENAME="sever_output.wav"
-	    self.frames=[]
-	    self.p=pyaudio.PyAudio()
-	    self.stream=p.open(format=FORMAT,channels=CHANNELS,rate=RATE,input=True,frames_per_buffer=CHUNK)
-	    self.sendData=''
+    def __init__(self):
+        threading.Thread.__init__(self)
+        self.CHUNK=1024
+        self.FORMAT=pyaudio.paInt16
+        self.CHANNELS=1
+        self.RATE=44100
+        self.WAVE_OUTPUT_FILENAME="sever_output.wav"
+        self.frames=[]
+        self.p=pyaudio.PyAudio()
+        self.stream=p.open(format=FORMAT,channels=CHANNELS,rate=RATE,input=True,frames_per_buffer=CHUNK)
+        self.sendData=''
 
-	def run(self):
-        endRecordFun(self)
+    def run(self):
+        sendRecordFun(self)
     def sendRecordFun():
-	     while 1:
+        while 1:
 	        sendData=stream.read(CHUNK)
 	        s.sendall(sendData)
 	        time.sleep(.1)
