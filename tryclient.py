@@ -55,10 +55,7 @@ class recievePlay(threading.Thread):
             data = conn.recv(1024)
             time.sleep(.1)
 
-try:
-	threadone=sendRecord()
-	threadtwo=recievePlay()
-except:
-	print "error creating threads"
+threadone=sendRecord()
+threadtwo=recievePlay()
 threadone.start()
 threadtwo.start()

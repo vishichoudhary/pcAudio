@@ -42,7 +42,7 @@ class recievePlay(threading.Thread):
 	    self.WAVE_OUTPUT_FILENAME="sever_output.wav"
 	    self.frames=[]
 	    self.p1=pyaudio.PyAudio()
-	    self.stream1=p1.open(format=p.FORMAT,channels=CHANNELS,rate=RATE,output=True,frames_per_buffer=CHUNK)
+	    self.stream1=p1.open(format=FORMAT,channels=CHANNELS,rate=RATE,output=True,frames_per_buffer=CHUNK)
 	    self.data='123'
 
     def run(self):
@@ -55,10 +55,8 @@ class recievePlay(threading.Thread):
             stream1.write(data)
             data = conn.recv(1024)
             time.sleep(.1)
-try:
-	threadone=sendRecord()
-	threadtwo=recievePlay()
-except:
-	print "error creating threads"
+
+threadone=sendRecord()
+threadtwo=recievePlay()
 threadone.start()
 threadtwo.start()
